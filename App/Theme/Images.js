@@ -1,7 +1,6 @@
-/**
- * Images should be stored in the `App/Images` directory and referenced using variables defined here.
- */
+// leave off @2x/@3x
+const images = {
 
-export default {
-  logo: require('App/Assets/Images/TOM.png'),
 }
+
+export default images

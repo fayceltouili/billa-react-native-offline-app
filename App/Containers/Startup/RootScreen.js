@@ -13,6 +13,7 @@ function RootScreen ( { startup }) {
 }, [])
     return (
       <View style={styles.container}>
+
         <AppNavigator
           // Initialize the NavigationService
           ref={(navigatorRef) => {

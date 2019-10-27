@@ -5,7 +5,7 @@ import { createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from '../Containers/HomeScreen';
 import RegisterUser from '../Containers/RegisterUser';
 import SplashScreen from  '../Containers/SplashScreen/SplashScreen'
-
+import CreateInvoice from '../Containers/InvoiceCreateScreen'
 
 const Navigator = createStackNavigator({
   SplashScreen: SplashScreen,
@@ -25,6 +25,14 @@ const Navigator = createStackNavigator({
       headerStyle: { backgroundColor: '#f05555' },
       headerTintColor: '#ffffff',
     },
+  },
+  Invoice: {
+    screen: CreateInvoice,
+    navigationOptions: {
+      title: 'Create Invoice',
+      headerStyle: { backgroundColor: '#f05555' },
+      headerTintColor: '#ffffff',
+    }
   },
 },
 {

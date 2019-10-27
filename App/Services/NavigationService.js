@@ -29,6 +29,20 @@ function navigate(routeName, params) {
   )
 }
 
+
+
+/**
+ * Call this function to navigate back.
+ *
+ */
+function navigateBack() {
+  navigator.dispatch(
+    StackActions.pop({
+      n: 1,
+    }),
+  )
+}
+
 /**
  * Call this function to navigate to a specific route AND reset the navigation history.
  *
@@ -57,4 +71,5 @@ export default {
   navigate,
   navigateAndReset,
   setTopLevelNavigator,
+  navigateBack,
 }

@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux'
 import NavigationService from '../../Services/NavigationService'
-import DottomNavigation from '../../Navigators/TabNavigation'
 import FabGroup from '../../Navigators/FabGroup'
 import Style from './HomeScreenStyle'
 import { PropTypes } from 'prop-types'
