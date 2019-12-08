@@ -7,7 +7,7 @@ import {AppRegistry} from 'react-native';
 import App from './App/Containers/App';
 import {name as appName} from './app.json';
 
-export default function Main() {
+ const Main = () => {
   return (
     <PaperProvider>
       <App />
@@ -15,5 +15,6 @@ export default function Main() {
   );
 }
 
+AppRegistry.registerComponent(appName, () => Main)
 
-AppRegistry.registerComponent(appName, () => Main);
+export default Main

@@ -179,10 +179,20 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-permissions')
+    implementation project(':react-native-linear-gradient')
+    implementation project(':react-native-print')
+    implementation project(':react-native-camera')
+    implementation project(':react-native-image-crop-picker')
+    implementation project(':react-native-mail')
+    implementation project(':react-native-pdf')
+    implementation project(':rn-fetch-blob')
     implementation project(':react-native-date-picker')
     implementation project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    compile project(':react-native-html-to-pdf')
+    implementation project(':react-native-datetimepicker')
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

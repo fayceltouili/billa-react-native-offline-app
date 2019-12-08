@@ -28,7 +28,6 @@ const ApplicationStyles = {
       borderBottomWidth: 0,
     },
     container: {
-      flex: 1,
       paddingTop: Metrics.baseMargin,
       backgroundColor: Colors.transparent
     },
@@ -51,8 +50,15 @@ const ApplicationStyles = {
     },
     titleText: {
       ...Fonts.style.h2,
-      fontSize: 14,
-      color: Colors.text
+      fontSize: 18,
+      color: '#315b96',
+      marginLeft: 15,
+      fontFamily: 'BalooBhai-Regular'
+    },
+    inputTitle: {
+      ...Fonts.style.inputTitle,
+      marginLeft: 15,
+      marginBottom: -10
     }
   },
   darkLabelContainer: {
