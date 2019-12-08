@@ -84,7 +84,7 @@ const ResetPassword = props => {
           color='#53759E'
           style={{margin: 15}}
           onPress={() => handleSubmit()}>
-            VERIFY
+            RESET PASSWORD
           </Button>
           { errors && <Text style={Styles.errorMsg}> {errors.toString()} </Text> }
       </View>
