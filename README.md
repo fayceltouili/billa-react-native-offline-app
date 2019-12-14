@@ -1,8 +1,7 @@
 # Billa React Native app
 
 **React Native**, **Redux** mobile phone application, scan products, manage inventory, create, print and send quick Invoices.
-
-
+Watch Demo on [Youtube](https://youtu.be/n6UrwRneC0o)
 
 
 ### Getting Started
@@ -53,5 +52,4 @@ Update Xcode to latest version
 
 3. Select your iPhone from list of devices and **RUN** build
 
-Watch Demo on [Youtube](https://youtu.be/N4HV2mOt8eI)
 
