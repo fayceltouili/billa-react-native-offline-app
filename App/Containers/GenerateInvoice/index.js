@@ -2,22 +2,22 @@
  *  Component responsible to generate, send and prind invoices
  */
 
-import React, { useState } from 'react'
-import { View, Text, Alert } from 'react-native'
-import { IconButton, Portal } from 'react-native-paper'
-import Styles from './Styles'
-import NavigationService from '../../Services/NavigationService'
-import RNHTMLtoPDF from 'react-native-html-to-pdf'
-import generateHTML from './InvoiceHTML'
-import { connect } from 'react-redux'
-import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource'
-import { clearingItems } from '../Items/Actions'
-import RNPrint from 'react-native-print'
-import Loading from './Loading'
-import Mailer from 'react-native-mail'
-import HtmlEmailTemplate from './HtmlEmailTemplate'
-import { clearCart, updateStockBatch } from '../Stock/Actions'
-import { stockSelector, cartSelector } from '../Stock/Selectors'
+import React, { useState } from 'react';
+import { View, Text, Alert } from 'react-native';
+import { IconButton, Portal } from 'react-native-paper';
+import Styles from './Styles';
+import NavigationService from '../../Services/NavigationService';
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
+import generateHTML from './InvoiceHTML';
+import { connect } from 'react-redux';
+import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
+import { clearingItems } from '../Items/Actions';
+import RNPrint from 'react-native-print';
+import Loading from './Loading';
+import Mailer from 'react-native-mail';
+import HtmlEmailTemplate from './HtmlEmailTemplate';
+import { clearCart, updateStockBatch } from '../Stock/Actions';
+import { stockSelector, cartSelector } from '../Stock/Selectors';
 import {
   invoiceStatusSelector,
   taxPercentSelector,
@@ -32,13 +32,13 @@ import {
   issueDateSelector,
   customerSelector,
   userSelector,
-} from '../../Selectors'
+} from '../../Selectors';
 
 
 
 const InvoiceTools = props => {
-  const { customer, user, updatingStock, clearInvoice } = props
 
+  const { customer, user, updatingStock, clearInvoice } = props;
 
   const [selectedPrinter, setSelectedPrinter] = useState()
   const [loading, setLoading] = useState(false)
@@ -57,11 +57,10 @@ const InvoiceTools = props => {
     console.log(file.filePath)
 
     if(flag === 'preview')
-      NavigationService.navigate('PreviewPdf', { source: file.filePath })
+      NavigationService.navigate('PreviewPdf', { source: file.filePath });
 
 
-    else if (flag === 'send')
-    {
+    else if (flag === 'send'){
       Mailer.mail({
         subject: 'Invoice',
         recipients: [customer.email],
@@ -150,7 +149,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(clearCart())
     dispatch(clearingItems())
   }
-})
+});
 
 const mapStateToProps = state => {
   return {
@@ -169,11 +168,11 @@ const mapStateToProps = state => {
     user: userSelector(state),
     cart: cartSelector(state),
     stock: stockSelector(state),
-  }
-}
+  };
+};
 
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(InvoiceTools)
+  )(InvoiceTools);

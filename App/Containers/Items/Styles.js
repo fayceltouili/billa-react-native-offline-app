@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   addItem: {
@@ -40,4 +40,4 @@ export default StyleSheet.create({
     fontFamily:'PalanquinDark-Regular',
     marginBottom: -6
   }
-})
+});

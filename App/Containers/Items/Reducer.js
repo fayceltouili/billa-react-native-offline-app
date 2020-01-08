@@ -15,7 +15,7 @@ import {
 export const initialState = {
   items: {},
   tax: 0,
-}
+};
 
 const reducer = (state = initialState, action) =>
   produce(state, draft => {

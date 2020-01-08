@@ -10,7 +10,6 @@ import {
   CLEAR_STATUS,
 } from './Constants';
 
-
 /**
  * Dispatched when update invoice status
  * @param string
@@ -21,7 +20,7 @@ export const settingStatus = invoiceStatus => {
     type: SET_STATUS,
     invoiceStatus,
   };
-}
+};
 
 /**
  * Dispatched when  update paid amount
@@ -33,8 +32,7 @@ export const settingPaidAmount = amountPaid => {
     type: SET_AMOUNT_PAID,
     amountPaid,
   };
-}
-
+};
 
 
 /**
@@ -47,7 +45,7 @@ export const settingTax = taxPercent => {
     type: SET_TAX_PERCENT,
     taxPercent,
   };
-}
+};
 
 /**
  * Dispatched when clearing status
@@ -57,4 +55,4 @@ export const clearingStatus = () => {
   return {
     type: CLEAR_STATUS,
   };
-}
+};

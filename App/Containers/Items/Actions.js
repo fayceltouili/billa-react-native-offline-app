@@ -2,7 +2,6 @@
  * cart items Actions
  * 
  */
-
 import {
   ADD_ITEM,
   UPDATE_ITEM,
@@ -10,7 +9,6 @@ import {
   ADD_TAX,
   CLEAR_ITEMS,
 } from './Constants';
-
 
 
 /**
@@ -22,7 +20,7 @@ export const AddingItem = newItem => {
     type: ADD_ITEM,
     newItem,
   };
-}
+};
 
 /**
  * Dispatched when updating an item
@@ -35,7 +33,7 @@ export const updatingItem = (updatedItem, names) => {
     updatedItem,
     names,
   };
-}
+};
 
 /**
  * Dispatched when removing item
@@ -46,7 +44,7 @@ export const removingItem = itemName => {
     type: REMOVE_ITEM,
     itemName,
   };
-}
+};
 
 /**
  * Dispatched when adding or modefying tax
@@ -58,8 +56,8 @@ export const AddingTax = tax => {
     type: ADD_TAX,
     tax,
   };
-}
-clearingItems
+};
+
 /**
  * Dispatched when clearing items reducer
  * @return {object}       An action object with a type of CLEAR_ITEMS 
@@ -68,4 +66,4 @@ export const clearingItems = () => {
   return {
     type: CLEAR_ITEMS,
   };
-}
+};

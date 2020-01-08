@@ -1,5 +1,6 @@
-import { StyleSheet } from 'react-native'
-import ApplicationStyles from '../../../Theme/ApplicationStyles'
+import { StyleSheet } from 'react-native';
+import ApplicationStyles from '../../../Theme/ApplicationStyles';
+
 export default StyleSheet.create({
   container: {
     ...ApplicationStyles.screen.container,
@@ -33,5 +34,4 @@ export default StyleSheet.create({
     textAlign: 'right',
     marginRight: 15
   }
-
-})
+});

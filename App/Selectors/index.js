@@ -1,45 +1,76 @@
 
 import { createSelector } from 'reselect';
 
-const invoiceStatusSelector = state => state.status.invoiceStatus
-const itemsSelector = state => state.items.items
-const taxPercentSelector = state => state.status.taxPercent
-const amountPaidSelector = state => state.status.amountPaid
-const dueDateSelector = state => state.date.dueDate
-const issueDateSelector = state => state.date.issueDate
-const allCustomersSelector = state => state.customers.customers
-const userSelector = state => state.user.user
-const customerIdSelector = state => state.customers.customer_id 
-const customerSelector = state => state.customers.customer
+const invoiceStatusSelector = state =>
+  state.status.invoiceStatus;
+
+const itemsSelector = state =>
+  state.items.items;
+
+const taxPercentSelector = state =>
+  state.status.taxPercent;
+
+const amountPaidSelector = state =>
+  state.status.amountPaid;
+
+const dueDateSelector = state =>
+  state.date.dueDate;
+
+const issueDateSelector = state =>
+  state.date.issueDate;
+
+const allCustomersSelector = state =>
+  state.customers.customers;
+
+const userSelector = state =>
+  state.user.user;
+
+const customerIdSelector = state =>
+  state.customers.customer_id ;
+
+const customerSelector = state =>
+  state.customers.customer;
+
 
 const subTotalSelector = createSelector(
   itemsSelector,
-  (items) => Object.values(items).reduce((acc, item) => acc + item.amount, 0)
-)
+  items => 
+    Object.values(items).reduce((acc, item) => 
+      acc + item.amount, 0)
+);
+
 
 const taxSelector = createSelector(
   taxPercentSelector,
   itemsSelector,
-  (taxPercent, items) => Object.values(items).reduce((acc, item) =>
+  (taxPercent, items) =>
+    Object.values(items).reduce((acc, item) =>
   acc + (item.taxed? (item.amount * taxPercent ) / 100 : 0) , 0)
-)
+);
+
 
 const totalSelector = createSelector(
   subTotalSelector,
   taxSelector,
-  (subtotal, tax) => subtotal + tax 
-)
+  (subtotal, tax) =>
+    subtotal + tax 
+);
+
+
 const discountsSelector = createSelector(
   itemsSelector,
-  (items) => Object.values(items).reduce((acc,item) => acc + +item.discount, 0)
-)
+  items =>
+    Object.values(items).reduce((acc,item) =>
+      acc + +item.discount, 0)
+);
 
 const amountDueSelector = createSelector(
   totalSelector,
   amountPaidSelector,
   discountsSelector,
-  (total, amountPaid, discount) => total - amountPaid - discount
-)
+  (total, amountPaid, discount) =>
+    total - amountPaid - discount
+);
 
 
 
@@ -59,5 +90,5 @@ export {
   userSelector,
   allCustomersSelector,
   customerIdSelector,
-}
+};
 

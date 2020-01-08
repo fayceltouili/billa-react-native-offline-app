@@ -1,4 +1,4 @@
-import moment from 'moment'
+import moment from 'moment';
 
 const generateHTML = (props) => {
 	const {
@@ -107,13 +107,13 @@ return `
 	</html>` 
 }
 
-export default generateHTML
+export default generateHTML;
 
 
 
 
-const generateItemsList = (itemsValues) => {
-	let output = ''
+const generateItemsList = itemsValues => {
+	let output = '';
 	itemsValues.map(item => {
 		output += `<tr style="border-bottom:1px solid #f2f2f2;font-family:Roboto-Medium;">
                 <td style="color:#242423;font-size:12px;font-family:Roboto-Medium;"><div>${item.name}</div><span style="font-size:8px">${item.description}</span></td>
@@ -122,6 +122,6 @@ const generateItemsList = (itemsValues) => {
 								<td style="color:#242423;font-size:12px;font-family:Roboto-Medium;text-align:right;">${item.discount}</td>
                 <td style="color:#242423;font-size:12px;font-family:Roboto-Medium;text-align:right;">$ ${(item.quantity.length > 0 ? +item.price * +item.quantity: +item.price).toFixed(2)}</td>
             </tr>`
-	})
-	return output
-}
+	});
+	return output;
+};

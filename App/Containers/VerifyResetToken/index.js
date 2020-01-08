@@ -2,24 +2,25 @@
  * Verify reset token form 
  */
 
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { View, Text, TextInput, ActivityIndicator } from 'react-native'
-import { Button } from 'react-native-paper'
-import Styles from './Styles'
-import { verifyToken } from './Actions'
-import { verifyTokenLoadingSelector, verifyTokenErrorsSelector } from './Selectors'
-import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { View, Text, TextInput } from 'react-native';
+import { Button } from 'react-native-paper';
+import Styles from './Styles';
+import { verifyToken } from './Actions';
+import { verifyTokenLoadingSelector, verifyTokenErrorsSelector } from './Selectors';
+import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator';
 
 
 const  VerifyResetToken = props => {
 
-  const { submitToken, loading, errors } = props
+  const { submitToken, loading, errors } = props;
 
-  const [token, setToken] = useState('')
-  const [tokenErr, setTokenErr] = useState(false)
+  const [token, setToken] = useState('');
+  const [tokenErr, setTokenErr] = useState(false);
 
-  const validatetokenLength = () => token.length === 6
+  const validatetokenLength = () => 
+    token.length === 6;
 
 
   return(
@@ -59,19 +60,19 @@ const  VerifyResetToken = props => {
   )
 }
 
-
 const mapDispatchToProps = dispatch => ({
-  submitToken: token => dispatch(verifyToken(token)),
+  submitToken: token =>
+    dispatch(verifyToken(token)),
 });
 
 const mapStateToProps = state => {
   return {
     loading: verifyTokenLoadingSelector(state),
     errors: verifyTokenErrorsSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(VerifyResetToken)
+  )(VerifyResetToken);

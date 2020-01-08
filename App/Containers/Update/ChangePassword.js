@@ -2,8 +2,8 @@
  * Change user password
  */
 
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import {
   View,
   Text,
@@ -12,28 +12,27 @@ import {
   SafeAreaView,
   TouchableWithoutFeedback,
   Keyboard,
-} from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import Styles from './Styles'
-import { updateUser } from './Actions'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { errorsUpdateSelector, loadingUpdateSelector } from './Selectors'
-import SingleAppBarNavigator from '../../Navigators/SingleAppBarNavigator'
-import NavigationService from '../../Services/NavigationService'
-import { userSelector } from '../WelcomeScreen/Selectors'
-import { setMessages } from '../MainScreen/Actions'
+} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Styles from './Styles';
+import { updateUser } from './Actions';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { errorsUpdateSelector, loadingUpdateSelector } from './Selectors';
+import SingleAppBarNavigator from '../../Navigators/SingleAppBarNavigator';
+import NavigationService from '../../Services/NavigationService';
+import { userSelector } from '../WelcomeScreen/Selectors';
+import { setMessages } from '../MainScreen/Actions';
 
 
-const passwordErrorMsg = 'Password must contain at least 6 characters, one numeric digit, one uppercase and one lowercase letter'
-
+const passwordErrorMsg = 'Password must contain at least 6 characters, one numeric digit, one uppercase and one lowercase letter';
 
 const  UpdatePassword = props => {
 
-  const { updateUserPassword, loading, errors, user, successMessages } = props
+  const { updateUserPassword, loading, errors, user, successMessages } = props;
 
-  const [password, setPassword] = useState()
-  const [confirmPassword, setConfirmPassword] = useState()
-  const [passwordErr, setPasswordErr] = useState(false)
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [passwordErr, setPasswordErr] = useState(false);
 
 
 
@@ -42,7 +41,6 @@ const  UpdatePassword = props => {
 
   const passwordStrength = (password) => /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password)
   const validatePassword = () => password === confirmPassword && passwordStrength(password)
-
 
   const handleSubmit = () => {
     if(!validatePassword()) setPasswordErr(passwordErrorMsg)
@@ -59,6 +57,7 @@ const  UpdatePassword = props => {
       }
     }
   }
+
   if(loading) return (
     <View style={Styles.container}>
       <ActivityIndicator size="large" color="#353232" />
@@ -120,19 +119,21 @@ const  UpdatePassword = props => {
 
 
 const mapDispatchToProps = dispatch => ({
-  updateUserPassword: data => dispatch(updateUser(data)),
-  successMessages: messages => dispatch(setMessages(messages))
-})
+  updateUserPassword: data => 
+    dispatch(updateUser(data)),
+  successMessages: messages =>
+    dispatch(setMessages(messages))
+});
 
 const mapStateToProps = state => {
   return {
     loading: loadingUpdateSelector(state),
     errors: errorsUpdateSelector(state),
     user: userSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(UpdatePassword)
+  )(UpdatePassword);

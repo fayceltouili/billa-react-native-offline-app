@@ -1,4 +1,4 @@
-import moment from 'moment'
+import moment from 'moment';
 
 export default HtmlEmailTemplate = (customer, user) => {
   return(
@@ -140,4 +140,4 @@ export default HtmlEmailTemplate = (customer, user) => {
     </body>
   </html>`
   )
-}
+};

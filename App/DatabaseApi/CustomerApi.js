@@ -1,9 +1,8 @@
 /**  manage database user requests*/
 
 import Message from './Message';
-
 import { openDatabase } from 'react-native-sqlite-storage';
-var db = openDatabase({ name: 'billa.db' });
+const db = openDatabase({ name: 'billa.db' });
 
 
 
@@ -44,7 +43,7 @@ return new Promise((resolve, reject) => {
   let msg = new Message();
 
   
-  db.transaction(function(txn) {
+  db.transaction(txn => {
     txn.executeSql(
       "SELECT name FROM sqlite_master WHERE type='table' AND name='table_customers'",
       [],

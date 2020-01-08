@@ -1,9 +1,9 @@
-import { put, select, call } from 'redux-saga/effects'
-import { forgotPasswordSuccess, forgotPasswordErrors } from './Actions'
-import request from '../../Services/request'
-import { forgotEmailSelector } from './Selectors'
-import { BASE_URL } from '../../Services/baseUrl'
-import NavigationService from '../../Services/NavigationService'
+import { put, select, call } from 'redux-saga/effects';
+import { forgotPasswordSuccess, forgotPasswordErrors } from './Actions';
+import request from '../../Services/request';
+import { forgotEmailSelector } from './Selectors';
+import { BASE_URL } from '../../Services/baseUrl';
+import NavigationService from '../../Services/NavigationService';
 
 
 /**
@@ -11,18 +11,18 @@ import NavigationService from '../../Services/NavigationService'
  */
 export function* passwordForgetting() {
 
-  const email = yield select(forgotEmailSelector)
+  const email = yield select(forgotEmailSelector);
   const requestURL = `${BASE_URL}/password/`;
 
   try {
-    const response = yield call(request, requestURL, { email }, 'POST')
+    const response = yield call(request, requestURL, { email }, 'POST');
 
-    yield put(forgotPasswordSuccess())
+    yield put(forgotPasswordSuccess());
     NavigationService.navigate('VerifyToken',
-    { message: ['Reset instructions sent', response.data.message] } )
+    { message: ['Reset instructions sent', response.data.message] } );
 
   }
   catch(err) {
-    yield put(forgotPasswordErrors(err))
+    yield put(forgotPasswordErrors(err));
   }
 }

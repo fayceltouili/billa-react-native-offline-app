@@ -1,7 +1,7 @@
 /**
  * Custom item adding form
  */
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   View,
   TextInput,
@@ -10,28 +10,28 @@ import {
   SafeAreaView,
   TouchableWithoutFeedback,
   Keyboard
-} from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import Styles from './Styles'
-import SingleAppBarNavigator from '../../../Navigators/SingleAppBarNavigator'
-import { connect } from 'react-redux'
-import { AddingItem } from '../Actions'
-import { taxPercentSelector } from '../../../Selectors'
+} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Styles from './Styles';
+import SingleAppBarNavigator from '../../../Navigators/SingleAppBarNavigator';
+import { connect } from 'react-redux';
+import { AddingItem } from '../Actions';
+import { taxPercentSelector } from '../../../Selectors';
 
 const ItemInputForm = props => {
 
-  const { submit, taxPercent } = props
+  const { submit, taxPercent } = props;
 
-  const [name, setName] = useState('')
-  const [price, setPrice] = useState('')
-  const [quantity, setQuantity] = useState('')
-  const [discount, setDiscount] = useState('')
-  const [description, setDescription] = useState('')
-  const [taxed, setTaxed] = useState(false)
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [discount, setDiscount] = useState('');
+  const [description, setDescription] = useState('');
+  const [taxed, setTaxed] = useState(false);
 
 
   const handleSubmit = () => { 
-    let newItem = {}
+    let newItem = {};
     newItem[name] = {
       name,
       price,
@@ -42,15 +42,15 @@ const ItemInputForm = props => {
       taxed,
      }
     submit(newItem) 
-  }
+  };
 
-  const Validate = () => name.length > 1 && price.length > 0
+  const Validate = () => name.length > 1 && price.length > 0;
 
-  const toggle = () => taxed? setTaxed(false) : setTaxed(true)
+  const toggle = () => taxed? setTaxed(false) : setTaxed(true);
 
-  const clacAmount = () => quantity.length > 0 ? +price * +quantity : +price
+  const clacAmount = () => quantity.length > 0 ? +price * +quantity : +price;
 
-  const doNothing = () => null
+  const doNothing = () => null;
 
   return(
     <>
@@ -138,15 +138,15 @@ const ItemInputForm = props => {
 const mapDispatchToProps = dispatch => ({
   submit: newItem => 
     dispatch(AddingItem(newItem))  
-})
+});
 
 const mapStateToProps = state => {
   return {
     taxPercent: taxPercentSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(ItemInputForm)
+  )(ItemInputForm);

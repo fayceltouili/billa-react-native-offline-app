@@ -1,15 +1,15 @@
 /** Component to render the customers list and a button to add a new customer */
 
 import React, { useState } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { List, IconButton, Colors, Searchbar } from 'react-native-paper';
-import { ScrollView, View, TouchableOpacity, Text } from 'react-native'
-import { allCustomersSelector } from '../Selectors'
-import BackAppBarNavigator from '../../../Navigators/BackAppBarNavigator'
-import Styles from './Styles'
-import { Divider } from 'react-native-paper'
-import NavigationService from '../../../Services/NavigationService'
-import { customerSelect } from '../Actions'
+import { ScrollView, View, TouchableOpacity, Text } from 'react-native';
+import { allCustomersSelector } from '../Selectors';
+import BackAppBarNavigator from '../../../Navigators/BackAppBarNavigator';
+import Styles from './Styles';
+import { Divider } from 'react-native-paper';
+import NavigationService from '../../../Services/NavigationService';
+import { customerSelect } from '../Actions';
 
 const AddCustomer = () => {
   return(
@@ -92,9 +92,9 @@ const mapStateToProps = state => {
   return {
     allCustomers: allCustomersSelector(state),
   }
-}
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(CustomersList)
+  )(CustomersList);

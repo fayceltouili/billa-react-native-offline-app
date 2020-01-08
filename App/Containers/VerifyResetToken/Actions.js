@@ -5,7 +5,6 @@ import {
   VERIFY_TOKEN,
   VERIFY_TOKEN_SUCCESS,
   VERIFY_TOKEN_ERROR,
-
 } from './Constants';
 
 /**
@@ -17,8 +16,8 @@ export const verifyToken = token => {
   return {
     type: VERIFY_TOKEN,
     token,
-  }
-}
+  };
+};
 
 
 
@@ -31,8 +30,8 @@ export const verifyToken = token => {
 export const verifyTokenSuccess = () => {
   return {
     type: VERIFY_TOKEN_SUCCESS,
-  }
-}
+  };
+};
 
 
 /**
@@ -47,4 +46,4 @@ export const verifyTokenErrors = error => {
     type: VERIFY_TOKEN_ERROR,
     error,
   };
-}
+};

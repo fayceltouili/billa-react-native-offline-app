@@ -20,7 +20,7 @@ export const setInvoiceDate = date => {
     type: SET_ISSUE_DATE,
     date,
   };
-}
+};
 
 /**
  * Dispatched to set Due date date
@@ -34,7 +34,7 @@ export const setDueDate = date => {
     type: SET_DUE_DATE,
     date,
   };
-}
+};
 
 
 /**
@@ -46,4 +46,4 @@ export const removeDueDate = () => {
   return {
     type: REMOVE_DUE_DATE,
   };
-}
+};

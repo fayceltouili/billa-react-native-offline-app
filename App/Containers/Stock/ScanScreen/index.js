@@ -3,27 +3,27 @@
 import React, { useRef, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
-import Styles from './Styles'
-import NavigationService from '../../../Services/NavigationService'
-import BackAppBarNavigator from '../../../Navigators/BackAppBarNavigator'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import BarcodeMask from 'react-native-barcode-mask'
-import { withNavigationFocus } from 'react-navigation' 
+import Styles from './Styles';
+import NavigationService from '../../../Services/NavigationService';
+import BackAppBarNavigator from '../../../Navigators/BackAppBarNavigator';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import BarcodeMask from 'react-native-barcode-mask';
+import { withNavigationFocus } from 'react-navigation'; 
 
 
 const ScanScreen = props => {
 
-  const { isFocused, navigation } = props
+  const { isFocused, navigation } = props;
 
    /**
-    * string  = 'AddToStock' || 'AddToCart'
+    * operation  = 'AddToStock' || 'AddToCart'
     * navigate to stock add form or cart add form 
     */
   const operation = navigation.getParam('operation')
 
-  const [flash, setFlash] = useState('off')
-  const [type, setType] = useState('back')
-  const cameraRef = useRef(null)
+  const [flash, setFlash] = useState('off');
+  const [type, setType] = useState('back');
+  const cameraRef = useRef(null);
 
 
   const onBarCodeRead = scanResult =>   
@@ -34,10 +34,10 @@ const ScanScreen = props => {
   
   
   const isTorch = () => 
-    flash === 'torch' ? true : false
+    flash === 'torch' ? true : false;
 
   const isCameraBack = () =>
-    type === 'back' ? true : false
+    type === 'back' ? true : false;
 
 
   return (
@@ -84,4 +84,5 @@ const ScanScreen = props => {
     </View>
   )
 }
-export default withNavigationFocus(ScanScreen)
+
+export default withNavigationFocus(ScanScreen);

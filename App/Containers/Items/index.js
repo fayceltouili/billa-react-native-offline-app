@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { List, Divider } from 'react-native-paper';
-import { View, Text, TouchableOpacity } from 'react-native'
-import Styles from './Styles'
-import NavigationService from '../../Services/NavigationService'
-import { itemsSelector, taxPercentSelector } from '../../Selectors/'
+import { View, Text, TouchableOpacity } from 'react-native';
+import Styles from './Styles';
+import NavigationService from '../../Services/NavigationService';
+import { itemsSelector, taxPercentSelector } from '../../Selectors'
 
 const  displayItems = ({ items, taxPercent }) => {
 
@@ -65,14 +65,16 @@ const mapDispatchToProps = dispatch  => ({
     NavigationService.navigate('CustomerInfo')
   },
 });
+
 const mapStateToProps = state => {
   return {
     items: itemsSelector(state),
     taxPercent: taxPercentSelector(state),
-  }}
+  };
+};
 
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(displayItems)
+  )(displayItems);

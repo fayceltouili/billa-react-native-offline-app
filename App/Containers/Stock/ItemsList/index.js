@@ -1,14 +1,14 @@
 /**
  * display stock items
  */
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { DataTable, Searchbar } from 'react-native-paper';
-import { View, Text, ScrollView } from 'react-native'
-import Styles from '../Styles'
-import NavigationService from '../../../Services/NavigationService'
-import AppBarNavigator from '../../../Navigators/AppBarNavigator'
-import RNPickerSelect from 'react-native-picker-select'
+import { View, Text, ScrollView } from 'react-native';
+import Styles from '../Styles';
+import NavigationService from '../../../Services/NavigationService';
+import AppBarNavigator from '../../../Navigators/AppBarNavigator';
+import RNPickerSelect from 'react-native-picker-select';
 import {
   stockOrderByNameSelectorAsc,
   stockOrderByNameSelectorDsc,
@@ -18,36 +18,36 @@ import {
   stockOrderByPriceDsc,
   stockArraySelector,
   cartSelector,
- } from '../Selectors'
+ } from '../Selectors';
 
 const stockList = props => {
 
-  const { sobad, sobaa, sobna, sobnd, sobpa, sobpd, stock, cart } = props
+  // sorting choices
+  const { sobad, sobaa, sobna, sobnd, sobpa, sobpd, stock, cart } = props;
 
-  const [orderOption, setOrderOption] = useState()
-  const [query, setQuery ] = useState('')
+  const [orderOption, setOrderOption] = useState();
+  const [query, setQuery ] = useState('');
 
   const placeholder = {
     label: 'Select an option',
     value: null,
     color: '#9EA0A4',
-  }
+  };
 
   const searchedQuery = () => 
     Object.values(stock).filter(item =>
-      item.name ? item.name.toLowerCase().includes(query) : null
-      )
+      item.name ? item.name.toLowerCase().includes(query) : null);
 
       //helper function verify if there is no search results
   const noSearchResults = () =>
-    query.length > 0  && searchedQuery().length == 0
+    query.length > 0  && searchedQuery().length == 0;
 
     // return an array of items to display
   const stockView = () =>
-    query.length > 0  ? searchedQuery() : (orderOption ? orderOption : stock)
+    query.length > 0  ? searchedQuery() : (orderOption ? orderOption : stock);
 
-  const addItem = () => NavigationService.navigate('Scan', { operation : 'AddToStock' })
-  const doNothing = () => NavigationService.navigate('MainScreen')
+  const addItem = () => NavigationService.navigate('Scan', { operation : 'AddToStock' });
+  const doNothing = () => NavigationService.navigate('MainScreen');
 
   return(
     <View>
@@ -141,9 +141,9 @@ const mapStateToProps = state => {
     sobpd: stockOrderByPriceDsc(state),
     stock: stockArraySelector(state),
     cart:  cartSelector(state)
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
-  )(stockList)
+  )(stockList);

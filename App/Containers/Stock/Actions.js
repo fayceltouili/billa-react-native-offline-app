@@ -16,7 +16,7 @@ import {
   REMOVE_STOCK_ITEM_SUCCESS,
   UPDATE_STOCK_BATCH,
   UPDATE_STOCK_BATCH_SUCCESS,
-} from './Constants'
+} from './Constants';
 
 /**
  * Dispatched when removng item
@@ -40,7 +40,7 @@ export const stockItemRemoved = itemCode => {
   return {
     type: REMOVE_STOCK_ITEM_SUCCESS,
     itemCode,
-  }
+  };
 };
 
 updateStockBatch
@@ -87,7 +87,7 @@ export const stockItemUpdated = item => {
   return {
     type: UPDATE_STOCK_ITEM_SUCCESS,
     item,
-  }
+  };
 };
 
 
@@ -110,7 +110,7 @@ export const updateCart = item => {
 export const clearCart = () => {
   return {
     type: CLEAR_CART,
-  }
+  };
 };
 /**
  * Dispatched when fetching the stock from database
@@ -119,7 +119,7 @@ export const clearCart = () => {
 export const fetchingAllStock = () => {
   return {
     type: FETCH_ALL_STOCK,
-  }
+  };
 };
 
 /**
@@ -131,7 +131,7 @@ export const allStockFetched = stock => {
   return {
     type: FETCH_ALL_STOCK_SUCCESS,
     stock,
-  }
+  };
 };
 
 
@@ -144,7 +144,7 @@ export const AddingItemToStock = newItem => {
   return {
     type: ADD_ITEM_TO_STOCK,
     newItem,
-  }
+  };
 };
 
 /**
@@ -156,7 +156,7 @@ export const itemAddedToStock = item => {
   return {
     type: ADD_ITEM_TO_STOCK_SUCCESS,
     item,
-  }
+  };
 };
 
 /**
@@ -168,5 +168,5 @@ export const stockError = error => {
   return {
     type: STOCK_ERROR,
     error,
-  }
+  };
 };

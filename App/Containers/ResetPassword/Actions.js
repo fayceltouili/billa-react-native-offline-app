@@ -5,7 +5,6 @@ import {
   RESET_PASSWORD,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_ERROR,
-
 } from './Constants';
 
 /**
@@ -15,8 +14,8 @@ export const resetPassword = data => {
   return {
     type: RESET_PASSWORD,
     data,
-  }
-}
+  };
+};
 
 
 
@@ -29,8 +28,8 @@ export const resetPassword = data => {
 export const resetPasswordSuccess = () => {
   return {
     type: RESET_PASSWORD_SUCCESS,
-  }
-}
+  };
+};
 
 
 /**
@@ -45,4 +44,4 @@ export const resetPasswordErrors = error => {
     type: RESET_PASSWORD_ERROR,
     error,
   };
-}
+};

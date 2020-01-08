@@ -1,10 +1,6 @@
-import { StyleSheet, Dimensions } from 'react-native'
-
-
-var { height, width } = Dimensions.get('window')
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-
   container: {
     flex: 1,
     flexDirection: 'column',
@@ -38,4 +34,4 @@ export default StyleSheet.create({
     padding: 30,
     justifyContent: 'flex-end',
 },
-})
+});

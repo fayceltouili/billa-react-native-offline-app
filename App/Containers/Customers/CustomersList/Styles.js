@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Metrics, ApplicationStyles } from '../../../Theme'
+import { StyleSheet } from 'react-native';
+import { Metrics, ApplicationStyles } from '../../../Theme';
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -9,4 +9,4 @@ export default StyleSheet.create({
   centered: {
     alignItems: 'center'
   }
-})
+});

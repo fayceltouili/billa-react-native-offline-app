@@ -1,10 +1,7 @@
-import produce from 'immer'
+import produce from 'immer';
 import {
-  REGISTER_USER,
-  REGISTER_USER_SUCCESS,
-  REGISTER_USER_ERROR,
   SET_MESSAGES
-} from './Constants'
+} from './Constants';
 
 // The initial state
 export const initialState = {
@@ -22,4 +19,4 @@ const reducer = (state = initialState, action) =>
     }
   });
 
-export default reducer
+export default reducer;

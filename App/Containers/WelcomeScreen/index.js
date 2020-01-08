@@ -2,22 +2,22 @@
  * Welcome screen and Login user form 
  */
 
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import { View, Text, Image, TextInput, TouchableOpacity, Switch } from 'react-native'
-import AsyncStorage  from '@react-native-community/async-storage'
-import { Button } from 'react-native-paper'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import NavigationService from '../../Services/NavigationService'
-import { fetchUser } from './Actions'
-import { userSelector, loadingSelector, errorsSelector } from './Selectors'
-import Styles from './Styles'
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { View, Text, Image, TextInput, Switch } from 'react-native';
+import AsyncStorage  from '@react-native-community/async-storage';
+import { Button } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import NavigationService from '../../Services/NavigationService';
+import { fetchUser } from './Actions';
+import { userSelector, loadingSelector, errorsSelector } from './Selectors';
+import Styles from './Styles';
 import LinearGradient from 'react-native-linear-gradient';
 
 
 const WelcomeScreen = props => {
 
-  const { loginUser, errors, loading } = props
+  const { loginUser, errors, loading } = props;
 
   const initialState = {
     email: '',
@@ -26,8 +26,8 @@ const WelcomeScreen = props => {
     isSwitchOn: false,
   }
 
-  const [loginState, setLoginState] = useState(initialState)
-  const  { email, password, emailErr, isSwitchOn } = loginState
+  const [loginState, setLoginState] = useState(initialState);
+  const  { email, password, emailErr, isSwitchOn } = loginState;
 
   // store login credentials from AsyncStorage
 
@@ -42,10 +42,10 @@ const WelcomeScreen = props => {
 
   const retrieveData = async () => {
     try {
-      const response = await AsyncStorage.getItem('@login')
+      const response = await AsyncStorage.getItem('@login');
       if(response){
-        const loginCredentials = JSON.parse(response)
-        setLoginState(loginCredentials)
+        const loginCredentials = JSON.parse(response);
+        setLoginState(loginCredentials);
       }
     } catch (error) {}
   }
@@ -54,7 +54,7 @@ const WelcomeScreen = props => {
 
    const removedata = async () => {
     try {
-      await AsyncStorage.removeItem('@login')
+      await AsyncStorage.removeItem('@login');
       return true;
     }
     catch(error) {}
@@ -63,15 +63,14 @@ const WelcomeScreen = props => {
   // when component did mount we try to retrieve credentials from AsyncStorage if exist
   useEffect(() => {
     const loadCredentials = async () =>
-      await retrieveData()
-
-    loadCredentials()
+      await retrieveData();
+    loadCredentials();
 }, [])
 
   // Validate email address
 
   const validateEmail = () => 
-    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email)
+    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
 
   // toggle switch state and storing/removing login credentials from asyncStorage
 
@@ -83,7 +82,7 @@ const WelcomeScreen = props => {
 
   const handleLogin = () => 
     !validateEmail() ? setLoginState({ ...loginState, emailErr: 'Invalid email address' }) 
-      : loginUser({ email, password })
+      : loginUser({ email, password });
     
 
 
@@ -180,18 +179,19 @@ const WelcomeScreen = props => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  loginUser: user => dispatch(fetchUser(user)),
-})
+  loginUser: user =>
+    dispatch(fetchUser(user)),
+});
 
 const mapStateToProps = state => {
   return {
     loading: loadingSelector(state),
     errors: errorsSelector(state),
     user: userSelector(state)
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(WelcomeScreen)
+  )(WelcomeScreen);

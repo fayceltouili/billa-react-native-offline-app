@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Appbar } from 'react-native-paper';
-import NavigationService from '../Services/NavigationService'
+import NavigationService from '../Services/NavigationService';
 
 export default  MyComponent = props => {
   
@@ -12,18 +12,19 @@ export default  MyComponent = props => {
     subtitle,
     iconSecond,
     iconFirst
-  } = props
+  } = props;
 
-  const goBack = () => NavigationService.navigateBack()
+  const goBack = () =>
+    NavigationService.navigateBack();
 
   const handleSaving = () => {
-    submit()
-    NavigationService.navigate(navigateTo)
+    submit();
+    NavigationService.navigate(navigateTo);
   }
 
   const handleRemove = () => {
-    remove()
-    NavigationService.navigate(navigateTo)
+    remove();
+    NavigationService.navigate(navigateTo);
   }
     
   return (
@@ -40,7 +41,6 @@ export default  MyComponent = props => {
       />
       <Appbar.Action icon={iconSecond} onPress={handleRemove} />
       <Appbar.Action icon={iconFirst} onPress={handleSaving} />
-
 
     </Appbar.Header>
   ) 

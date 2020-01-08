@@ -1,5 +1,5 @@
-import { StyleSheet, Dimensions } from 'react-native'
-const { height, width } = Dimensions.get('window')
+import { StyleSheet, Dimensions } from 'react-native';
+const { height, width } = Dimensions.get('window');
 
 export default StyleSheet.create({
 
@@ -9,8 +9,6 @@ export default StyleSheet.create({
     top: height*.1,
     right: 40,
     left: 40,
-
- 
   },
   ErrorContainer: {
     right: 40,
@@ -36,7 +34,6 @@ export default StyleSheet.create({
     flexShrink: 1 ,
     color:'white',
     marginBottom: 30,
-
   },
   billaLogo: {
     height: 150,
@@ -75,4 +72,4 @@ export default StyleSheet.create({
     bottom: 10,
     position: 'absolute',
   },
-})
+});

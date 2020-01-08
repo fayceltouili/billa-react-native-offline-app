@@ -1,26 +1,26 @@
 /** Billa Main screen */
 
-import React, { useState, useEffect } from 'react'
-import Date from '../Date'
-import CustomerInvoice from '../Customers'
-import AddingItem from '../Items'
-import AppBarNavigatorCreate from '../../Navigators/AppBarNavigatorCreate'
-import { ScrollView, View, Alert } from 'react-native'
-import { Divider, Portal } from 'react-native-paper'
-import GenerateInvoice from '../../Containers/GenerateInvoice'
-import Status from '../Status'
-import { connect } from 'react-redux'
-import { itemsSelector, customerSelector, } from '../../Selectors'
-import { clearingCustomer } from '../Customers/Actions'
-import { clearingItems } from '../Items/Actions'
-import { clearingStatus } from '../Status/Actions'
-import { userSelector } from '../WelcomeScreen/Selectors'
-import DropdownAlert from 'react-native-dropdownalert'
-import { updateCart } from '../Stock/Actions'
-import { stockSelector, cartSelector } from '../Stock/Selectors'
-import { allCustomersSelector } from '../Customers/Selectors'
-import { messagesSelectors } from './Selectors'
-import { setMessages } from './Actions'
+import React, { useState, useEffect } from 'react';
+import Date from '../Date';
+import CustomerInvoice from '../Customers';
+import AddingItem from '../Items';
+import AppBarNavigatorCreate from '../../Navigators/AppBarNavigatorCreate';
+import { ScrollView, View, Alert } from 'react-native';
+import { Divider, Portal } from 'react-native-paper';
+import GenerateInvoice from '../../Containers/GenerateInvoice';
+import Status from '../Status';
+import { connect } from 'react-redux';
+import { itemsSelector, customerSelector } from '../../Selectors';
+import { clearingCustomer } from '../Customers/Actions';
+import { clearingItems } from '../Items/Actions';
+import { clearingStatus } from '../Status/Actions';
+import { userSelector } from '../WelcomeScreen/Selectors';
+import DropdownAlert from 'react-native-dropdownalert';
+import { updateCart } from '../Stock/Actions';
+import { stockSelector, cartSelector } from '../Stock/Selectors';
+import { allCustomersSelector } from '../Customers/Selectors';
+import { messagesSelectors } from './Selectors';
+import { setMessages } from './Actions';
 
 
 const  MainScreen = props => {
@@ -110,8 +110,8 @@ const  MainScreen = props => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  saveItems: updatedItems => dispatch(savingItems(updatedItems)),
 
+  saveItems: updatedItems => dispatch(savingItems(updatedItems)),
   saveInvoiceDetails: invoiceDetails => 
     dispatch(savingInvoiceDetails(invoiceDetails)),
 
@@ -123,7 +123,7 @@ const mapDispatchToProps = dispatch => ({
 
   updatingCart: item => 
     dispatch(updateCart(item)),
-  
+
   successMessages: messages => dispatch(setMessages(messages))
 
 });
@@ -139,7 +139,8 @@ const mapStateToProps = state => {
     messages: messagesSelectors(state),
   }
 }
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(MainScreen)
+  )(MainScreen);

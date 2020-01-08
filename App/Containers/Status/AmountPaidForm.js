@@ -1,23 +1,23 @@
 /**
  *  Form to update paid amount
  */
-import React, { useState } from 'react'
-import { View, TextInput } from 'react-native'
-import Styles from './Styles'
-import SingleAppBarNavigator from '../../Navigators/SingleAppBarNavigator'
-import { connect } from 'react-redux'
-import { settingPaidAmount } from './Actions'
-import { amountPaidSelector } from './Selectors'
+import React, { useState } from 'react';
+import { View, TextInput } from 'react-native';
+import Styles from './Styles';
+import SingleAppBarNavigator from '../../Navigators/SingleAppBarNavigator';
+import { connect } from 'react-redux';
+import { settingPaidAmount } from './Actions';
+import { amountPaidSelector } from './Selectors';
 
 
 const AmountPaidForm = props => {
 
-  const { preAmount, submit } = props
-  const [amountPaid, setAmountPaid] = useState(preAmount.toString())
+  const { preAmount, submit } = props;
+  const [amountPaid, setAmountPaid] = useState(preAmount.toString());
 
-  const handleSubmit = () => submit(amountPaid)
+  const handleSubmit = () => submit(amountPaid);
 
-  return (
+  return(
     <>
       <SingleAppBarNavigator
         title='Paid amount'
@@ -38,6 +38,7 @@ const AmountPaidForm = props => {
     </>
   )
 }
+
 const mapDispatchToProps = dispatch => ({
   submit: amountPaid =>
     dispatch(settingPaidAmount(amountPaid)) 
@@ -46,10 +47,10 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => {
   return {
     preAmount: amountPaidSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(AmountPaidForm)
+  )(AmountPaidForm);

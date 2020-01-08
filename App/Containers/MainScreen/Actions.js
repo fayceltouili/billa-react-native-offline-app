@@ -3,7 +3,7 @@
 import {
   SET_LOADING,
   SET_MESSAGES,
-} from './Constants'
+} from './Constants';
 
 /**
  * Dispatched when adding new item
@@ -14,11 +14,11 @@ export const setLoading = value => {
     type: SET_LOADING,
     value,
   };
-}
+};
 
 export const setMessages = messages => {
   return {
     type: SET_MESSAGES,
     messages,
   };
-}
+};

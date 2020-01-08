@@ -5,7 +5,6 @@ import {
   UPDATE_USER,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
-
 } from './Constants';
 
 /**
@@ -18,8 +17,8 @@ export const updateUser = user => {
   return {
     type: UPDATE_USER,
     user,
-  }
-}
+  };
+};
 
 
 
@@ -32,8 +31,8 @@ export const updateUser = user => {
 export const userUpdated = () => {
   return {
     type: UPDATE_USER_SUCCESS,
-  }
-}
+  };
+};
 
 
 /**
@@ -48,4 +47,4 @@ export const userUpdateError = error => {
     type: UPDATE_USER_ERROR,
     error,
   };
-}
+};

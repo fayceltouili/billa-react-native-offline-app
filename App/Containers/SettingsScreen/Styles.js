@@ -1,5 +1,5 @@
-import { StyleSheet, Dimensions } from 'react-native'
-const { height, width } = Dimensions.get('window')
+import { StyleSheet, Dimensions } from 'react-native';
+const { height, width } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
@@ -24,13 +24,10 @@ export default StyleSheet.create({
     padding: 15,
     backgroundColor: '#fffdf9',
   },
-
   listText: {
     fontFamily: 'PalanquinDark-Regular',
-
     color: '#393e46',
     fontSize: 16,
-
   },
-})
+});
 

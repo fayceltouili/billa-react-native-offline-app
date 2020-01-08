@@ -1,9 +1,8 @@
 /**  manage database user requests*/
 
 import Message from './Message';
-
 import { openDatabase } from 'react-native-sqlite-storage';
-var db = openDatabase({ name: 'billa.db' });
+const db = openDatabase({ name: 'billa.db' });
 
 
 
@@ -12,7 +11,7 @@ const userRegister = user => {
   return new Promise((resolve, reject) => {
     let msg = new Message();
 
-    db.transaction(function(txn) {
+    db.transaction(txn => {
       txn.executeSql('DROP TABLE IF EXISTS table_user', []);
       txn.executeSql(
         'CREATE TABLE IF NOT EXISTS table_user(first_name VARCHAR(30), last_name VARCHAR(30), email VARCHAR(30) PRIMARY KEY, buisness_name VARCHAR(30), phone VARCHAR(15), address VARCHAR(30), city VARCHAR(30), state TEXT, zip_code TEXT, logo Text)',
@@ -24,7 +23,7 @@ const userRegister = user => {
       txn.executeSql(
         "SELECT name FROM sqlite_master WHERE type='table' AND name='table_customers'",
         [],
-        function(tx, res) {
+        (tx, res) => {
           if (res.rows.length == 0) {
             txn.executeSql('DROP TABLE IF EXISTS table_customers', []);
             txn.executeSql(
@@ -39,7 +38,7 @@ const userRegister = user => {
       txn.executeSql(
         "SELECT name FROM sqlite_master WHERE type='table' AND name='table_items'",
         [],
-        function(tx, res) {
+        (tx, res) => {
           if (res.rows.length == 0) {
             txn.executeSql('DROP TABLE IF EXISTS table_items', []);
             txn.executeSql(
@@ -80,13 +79,13 @@ const userRegister = user => {
 
 // return an object of user information
 const fetchUser = () => {
-    // db.transaction(function(txn) {
+    // db.transaction(txn => {
     //     txn.executeSql('DROP TABLE IF EXISTS table_user', []);
     //   })
-    //   db.transaction(function(txn) {
+    //   db.transaction(txn => {
     //     txn.executeSql('DROP TABLE IF EXISTS table_customers', []);
     //   })
-       //   db.transaction(function(txn) {
+       //   db.transaction(txn => {
     //     txn.executeSql('DROP TABLE IF EXISTS table_items', []);
     //   })
   return new Promise((resolve, reject) => {

@@ -1,7 +1,7 @@
 import Mailer from 'react-native-mail';
-import React from 'react';
 import { Alert } from 'react-native';
-import HtmlEmailTemplate from './HtmlEmailTemplate'
+import HtmlEmailTemplate from './HtmlEmailTemplate';
+
 const sendEmail = ( {customer, user, filePath }) => {
   Mailer.mail({
       subject: 'Invoice',
@@ -25,4 +25,4 @@ const sendEmail = ( {customer, user, filePath }) => {
     )
   
 }
-export default sendEmail
+export default sendEmail;

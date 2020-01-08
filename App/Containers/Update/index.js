@@ -2,39 +2,35 @@
  * RegisterUser form to register 
  */
 
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import {
   View,
   Text,
   TextInput,
   ActivityIndicator,
-  TouchableOpacity,
-  Image,
   SafeAreaView,
   TouchableWithoutFeedback,
   Keyboard,
-} from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import Styles from './Styles'
-import { updateUser } from './Actions'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import RNPickerSelect from 'react-native-picker-select'
-import { statesList } from '../../Services/StatesList'
-import { errorsUpdateSelector, loadingUpdateSelector } from './Selectors'
-import { userSelector } from '../WelcomeScreen/Selectors'
-import SingleAppBarNavigator from '../../Navigators/SingleAppBarNavigator'
-import ImagePicker from 'react-native-image-picker'
-import NavigationService from '../../Services/NavigationService'
-import { setMessages } from '../MainScreen/Actions'
-
+} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Styles from './Styles';
+import { updateUser } from './Actions';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import RNPickerSelect from 'react-native-picker-select';
+import { statesList } from '../../Services/StatesList';
+import { errorsUpdateSelector, loadingUpdateSelector } from './Selectors';
+import { userSelector } from '../WelcomeScreen/Selectors';
+import SingleAppBarNavigator from '../../Navigators/SingleAppBarNavigator';
+import NavigationService from '../../Services/NavigationService';
+import { setMessages } from '../MainScreen/Actions';
 
 
 const  UpdateUser = props => {
 
-  const { submitUser, loading, errors, user, successMessages } = props
+  const { submitUser, loading, errors, user, successMessages } = props;
 
-  const [userState, setUserState] = useState({ ...user, websiteErr: false, emailErr: false })
+  const [userState, setUserState] = useState({ ...user, websiteErr: false, emailErr: false });
   const {
     first_name,
     last_name,
@@ -51,7 +47,7 @@ const  UpdateUser = props => {
     email,
     id,
     emailErr,
-    } = { ...userState } 
+    } = { ...userState };
 
   const placeholder = {
     label: 'Select a state...',
@@ -64,8 +60,10 @@ const  UpdateUser = props => {
       path: 'images',
     },
   }
-  const validateEmail = () => {
-    return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email)}
+
+  const validateEmail = () => 
+    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
+
   const ValidateWebsite = () =>
     website && website.length > 0 ?
       /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(website)
@@ -73,7 +71,7 @@ const  UpdateUser = props => {
 
   const handleSubmit = () => {
     if(!validateEmail())
-      setUserState({ ...userState, emailErr: 'Invalid email address' })
+      setUserState({ ...userState, emailErr: 'Invalid email address' });
     else{
       let user = {
         first_name,
@@ -90,10 +88,10 @@ const  UpdateUser = props => {
         email,
         id,
       }
-      submitUser(user)
+      submitUser(user);
       if(!errors){
-        successMessages(['Success', 'You have successfully update your account!'])
-        NavigationService.navigate('MainScreen')
+        successMessages(['Success', 'You have successfully update your account!']);
+        NavigationService.navigate('MainScreen');
       }
     }
   }
@@ -116,18 +114,6 @@ const  UpdateUser = props => {
         <SafeAreaView >
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={Styles.inner}>
-              {/* <TouchableOpacity
-                style={Styles.imgContainer}
-                  onPress={() => ImagePicker.showImagePicker( options, (response)=>
-                      setUserState( { ...userState, logo: response.uri } ))
-                    }>
-                <Text style={Styles.uploadLogoText}>Logo</Text>
-                <Image
-                  style={Styles.logo}
-                  source={logo && {uri: logo} }
-                  resizeMode="contain"
-                  />
-              </TouchableOpacity> */}
               <View style={Styles.input}>
                 <Icon 
                   name="email-outline"
@@ -258,13 +244,14 @@ const  UpdateUser = props => {
       </KeyboardAwareScrollView>
    </>
   )
-
 }
 
 
 const mapDispatchToProps = dispatch => ({
-  submitUser: user => dispatch(updateUser(user)),
-  successMessages: messages => dispatch(setMessages(messages))
+  submitUser: user => 
+    dispatch(updateUser(user)),
+  successMessages: messages =>
+    dispatch(setMessages(messages))
 });
 
 const mapStateToProps = state => {
@@ -272,10 +259,10 @@ const mapStateToProps = state => {
     loading: loadingUpdateSelector(state),
     errors: errorsUpdateSelector(state),
     user: userSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(UpdateUser)
+  )(UpdateUser);

@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native'
-import Fonts from '../../Theme/Fonts'
-import Colors from '../../Theme/Colors'
-import ApplicationStyles from '../../Theme/ApplicationStyles'
+import { StyleSheet } from 'react-native';
+import Fonts from '../../Theme/Fonts';
+import Colors from '../../Theme/Colors';
+import ApplicationStyles from '../../Theme/ApplicationStyles';
 
 export default StyleSheet.create({
   mainContainer: {
@@ -24,4 +24,4 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: 5,
   }
-})
+});

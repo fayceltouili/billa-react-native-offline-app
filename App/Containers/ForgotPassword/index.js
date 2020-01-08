@@ -2,24 +2,24 @@
  * RegisterUser form to register 
  */
 
-import React, {useState} from 'react'
-import { connect } from 'react-redux'
-import { View, Text, TextInput } from 'react-native'
-import { Button } from 'react-native-paper'
-import Styles from './Styles'
-import { forgotPassword } from './Actions'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator'
-import { forgotLoadingSelector, forgotErrorsSelector } from './Selectors'
+import React, {useState} from 'react';
+import { connect } from 'react-redux';
+import { View, Text, TextInput } from 'react-native';
+import { Button } from 'react-native-paper';
+import Styles from './Styles';
+import { forgotPassword } from './Actions';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator';
+import { forgotLoadingSelector, forgotErrorsSelector } from './Selectors';
 
 const  ForgotPassword = props => {
 
-  const { submitEmail, loading, errors  } = props
+  const { submitEmail, loading, errors  } = props;
 
-  const [email, setEmail] = useState()
-  const [emailErr, setEmailErr] = useState(false)
+  const [email, setEmail] = useState();
+  const [emailErr, setEmailErr] = useState(false);
 
-  const validateEmail = () => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email)
+  const validateEmail = () => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
 
 
   return(
@@ -70,10 +70,10 @@ const mapStateToProps = state => {
   return {
     loading: forgotLoadingSelector(state),
     errors: forgotErrorsSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(ForgotPassword)
+  )(ForgotPassword);

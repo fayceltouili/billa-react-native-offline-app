@@ -1,33 +1,33 @@
 /**
  * View and edit stock items
  */
-import React, { useState } from 'react'
-import { View, TextInput, Text, Alert } from 'react-native'
-import Styles from './Styles'
-import AppBarNavigator from '../../../Navigators/AppBarNavigator'
-import { connect } from 'react-redux'
-import { updatingStockItem, removingStockItem } from '../Actions'
-import NavigationService from '../../../Services/NavigationService'
+import React, { useState } from 'react';
+import { View, TextInput, Text, Alert } from 'react-native';
+import Styles from './Styles';
+import AppBarNavigator from '../../../Navigators/AppBarNavigator';
+import { connect } from 'react-redux';
+import { updatingStockItem, removingStockItem } from '../Actions';
+import NavigationService from '../../../Services/NavigationService';
 
 
 const ItemInputForm = props => {
 
-  const { navigation, update, remove } = props
+  const { navigation, update, remove } = props;
 
-  const item = navigation.getParam('item')
-  const itemCode = item.itemCode
+  const item = navigation.getParam('item');
+  const itemCode = item.itemCode;
 
   const [itemState, setItemState] = useState({ 
     ...item,
     price: item.price.toString(),
     available: item.available.toString() 
-  })
+  });
 
-  const { name, price, available, description } = itemState
+  const { name, price, available, description } = itemState;
 
   handleUpdate = () => { 
-    update(itemState) 
-    NavigationService.navigate('ItemsList')
+    update(itemState);
+    NavigationService.navigate('ItemsList');
   }
 
   const handleRemove = () => {
@@ -101,12 +101,13 @@ const ItemInputForm = props => {
     </>
   )
 }
+
 const mapDispatchToProps = dispatch => ({
   update: updatedItem => dispatch(updatingStockItem(updatedItem)), 
-  remove: itemCode => { dispatch(removingStockItem(itemCode))}
+  remove: itemCode => dispatch(removingStockItem(itemCode))
 });
 
 export default connect(
   null,
   mapDispatchToProps
-  )(ItemInputForm)
+  )(ItemInputForm);

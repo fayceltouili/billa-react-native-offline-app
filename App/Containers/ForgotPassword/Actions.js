@@ -5,7 +5,6 @@ import {
   FORGOT_PASSWORD,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_ERROR,
-
 } from './Constants';
 
 /**
@@ -17,8 +16,8 @@ export const forgotPassword = email => {
   return {
     type: FORGOT_PASSWORD,
     email,
-  }
-}
+  };
+};
 
 
 
@@ -30,8 +29,8 @@ export const forgotPassword = email => {
 export const forgotPasswordSuccess = () => {
   return {
     type: FORGOT_PASSWORD_SUCCESS,
-  }
-}
+  };
+};
 
 
 /**
@@ -46,4 +45,4 @@ export const forgotPasswordErrors = error => {
     type: FORGOT_PASSWORD_ERROR,
     error,
   };
-}
+};

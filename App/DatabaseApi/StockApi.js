@@ -1,9 +1,8 @@
 /**  manage database user requests*/
 
 import Message from './Message';
-
 import { openDatabase } from 'react-native-sqlite-storage';
-var db = openDatabase({ name: 'billa.db' });
+const db = openDatabase({ name: 'billa.db' });
 
 
 
@@ -154,7 +153,7 @@ const clearStock = () => {
     txn.executeSql(
       "SELECT name FROM sqlite_master WHERE type='table' AND name='tabele_items'",
       [],
-      function(tx, res) {
+      (tx, res) => {
         if (res.rows.length == 0) {
           txn.executeSql('DROP TABLE IF EXISTS table_items', []);
           txn.executeSql(
@@ -172,7 +171,7 @@ const createTable = () => {
     txn.executeSql(
       "SELECT name FROM sqlite_master WHERE type='table' AND name='tabele_items'",
       [],
-      function(tx, res) {
+      (tx, res) =>{
         if (res.rows.length == 0) {
           txn.executeSql('DROP TABLE IF EXISTS table_items', []);
           txn.executeSql(

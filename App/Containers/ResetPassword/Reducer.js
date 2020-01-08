@@ -3,19 +3,19 @@
 
  */
 
-import produce from 'immer'
+import produce from 'immer';
 import {
   RESET_PASSWORD,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_ERROR,
-} from './Constants'
+} from './Constants';
 
 // The initial state
 export const initialState = {
   data: false,
   loading: false,
   error: false,
-}
+};
 
 const reducer = (state = initialState, action) =>
   produce(state, draft => {
@@ -39,6 +39,7 @@ const reducer = (state = initialState, action) =>
       draft.loading = false
       break
     }
-  });
+  }
+);
 
-export default reducer
+export default reducer;

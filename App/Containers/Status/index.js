@@ -1,9 +1,9 @@
 /** Invoice status picker */
 
-import React from 'react'
-import { connect } from 'react-redux'
-import { View, Text, TouchableOpacity } from 'react-native'
-import Styles from './Styles'
+import React from 'react';
+import { connect } from 'react-redux';
+import { View, Text, TouchableOpacity } from 'react-native';
+import Styles from './Styles';
 import {
   invoiceStatusSelector,
   taxPercentSelector,
@@ -14,14 +14,14 @@ import {
   amountPaidSelector,
   amountDueSelector,
   discountsSelector,
-} from '../../Selectors'
-import NavigationService from '../../Services/NavigationService'
+} from '../../Selectors';
+import NavigationService from '../../Services/NavigationService';
 import {
   settingStatus,
   settingPaidAmount,
   settingDuemount,
-} from './Actions'
-import RNPickerSelect from 'react-native-picker-select'
+} from './Actions';
+import RNPickerSelect from 'react-native-picker-select';
 
 const  InvoiceStatus = props => {
 
@@ -35,13 +35,13 @@ const  InvoiceStatus = props => {
     subTotal,
     handleChangingStatus,
     total
-  } = props
+  } = props;
   
   const placeholder = {
     label: 'Select Status',
     value: 'Select Status',
     fontFamily:'BalooBhai-Regular',
-  }
+  };
  
   return (
     <View >
@@ -116,15 +116,14 @@ const  InvoiceStatus = props => {
   )
 }
 
-
 const mapDispatchToProps = dispatch => ({
-  handleChangingStatus: invoiceStatus => dispatch(settingStatus(invoiceStatus)),
-  handleChangingPaidAmount: amountPaid => dispatch(settingPaidAmount(amountPaid)),
-  handleChangingPaidAmount: amountDue => dispatch(settingDuemount(amountDue)),
-
-
-
-})
+  handleChangingStatus: invoiceStatus => 
+    dispatch(settingStatus(invoiceStatus)),
+  handleChangingPaidAmount: amountPaid => 
+    dispatch(settingPaidAmount(amountPaid)),
+  handleChangingPaidAmount: amountDue => 
+    dispatch(settingDuemount(amountDue)),
+});
 
 const mapStateToProps = state => {
   return {
@@ -137,11 +136,11 @@ const mapStateToProps = state => {
     total: totalSelector(state),
     subTotal: subTotalSelector(state),
     discounts: discountsSelector(state),
-  }
-}
+  };
+};
 
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(InvoiceStatus)
+  )(InvoiceStatus);

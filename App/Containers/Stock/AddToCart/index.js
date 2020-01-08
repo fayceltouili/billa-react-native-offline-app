@@ -1,39 +1,39 @@
 /**
  *  component to add items to cart
  */
-import React, { useState, useEffect } from 'react'
-import { View, TextInput, Text, Switch, Alert } from 'react-native'
-import Styles from '../Styles'
-import AppBarNavigator from '../../../Navigators/AppBarNavigator'
-import { connect } from 'react-redux'
-import NavigationService from '../../../Services/NavigationService'
-import { AddingItem } from '../../Items/Actions'
-import { stockSelector, cartSelector } from '../../Stock/Selectors'
-import { DataTable } from 'react-native-paper'
-import { updateCart } from '../Actions'
+import React, { useState, useEffect } from 'react';
+import { View, TextInput, Text, Switch, Alert } from 'react-native';
+import Styles from '../Styles';
+import AppBarNavigator from '../../../Navigators/AppBarNavigator';
+import { connect } from 'react-redux';
+import NavigationService from '../../../Services/NavigationService';
+import { AddingItem } from '../../Items/Actions';
+import { stockSelector, cartSelector } from '../../Stock/Selectors';
+import { DataTable } from 'react-native-paper';
+import { updateCart } from '../Actions';
 
 
 const ScannedItemToCart = props => {
 
-  const { submit, navigation, stock, updateStock, cart } = props
+  const { submit, navigation, stock, updateStock, cart } = props;
 
-  const values = navigation.getParam('values')
-  const { codeType, itemCode } = values
+  const values = navigation.getParam('values');
+  const { codeType, itemCode } = values;
 
-  const { name, price, description, available } = { ...stock[itemCode] }
-  const cartQuantity = cart[itemCode]
+  const { name, price, description, available } = { ...stock[itemCode] };
+  const cartQuantity = cart[itemCode];
 
   const initialState = {
     availably: cartQuantity ? +available - +cartQuantity: available,
     quantity: '',
     taxed: false,
     discount: ''
-  }
+  };
 
-  const [itemState, setItemState] = useState(initialState)
-  const { availably, quantity, taxed, discount } = itemState
+  const [itemState, setItemState] = useState(initialState);
+  const { availably, quantity, taxed, discount } = itemState;
 
-  const clacAmount = () => (+price * +quantity) 
+  const clacAmount = () => (+price * +quantity);
 
 
   const handleSubmit = () => { 
@@ -90,16 +90,16 @@ const ScannedItemToCart = props => {
         {cancelable: false},
       );       
     }
-  }, [])
+  }, []);
 
   const doNothing = () => Alert.alert(
     'Wrong input',
     `Please set quantity`,
     [ {text: 'Ok'}],
     {cancelable: false},
-  ) 
+  );
 
-  const checkAvailability = () =>  +available >=  +quantity && +quantity >= 1
+  const checkAvailability = () =>  +available >=  +quantity && +quantity >= 1;
  
     return(
       <>
@@ -175,20 +175,21 @@ const ScannedItemToCart = props => {
       </View>
     </>
   )
-
 }
+
 const mapDispatchToProps = dispatch => ({
   submit: newItem => dispatch(AddingItem(newItem)),
   updateStock: item => dispatch(updateCart(item))
-})
+});
 
 const mapStateToProps = state => {
   return {
     stock: stockSelector(state),
     cart: cartSelector(state),
-  }}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps)
-  (ScannedItemToCart)
+  (ScannedItemToCart);

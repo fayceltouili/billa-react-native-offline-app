@@ -2,26 +2,26 @@
  *  Scan add products to stock
  */
 
-import React, { useState } from 'react'
-import { View, TextInput, Text, Alert } from 'react-native'
-import Styles from '../Styles'
-import AppBarNavigator from '../../../Navigators/AppBarNavigator'
-import { connect } from 'react-redux'
-import { AddingItemToStock } from '../Actions'
-import NavigationService from '../../../Services/NavigationService'
+import React, { useState } from 'react';
+import { View, TextInput, Text, Alert } from 'react-native';
+import Styles from '../Styles';
+import AppBarNavigator from '../../../Navigators/AppBarNavigator';
+import { connect } from 'react-redux';
+import { AddingItemToStock } from '../Actions';
+import NavigationService from '../../../Services/NavigationService';
 import {
   stockErrorsSelector,
   stockLoadingSelector,
   itemToUpdateSelector
-} from '../Selectors'
+} from '../Selectors';
 
 
 const AddItemToStock = props => {
   
-  const { submit, navigation, itemToUpdate, error, loading } = props
+  const { submit, navigation, itemToUpdate, error, loading } = props;
 
-  const values = navigation.getParam('values')
-  const { codeType, itemCode } = values 
+  const values = navigation.getParam('values');
+  const { codeType, itemCode } = values ;
   
   const initialState = {
     itemCode,
@@ -30,13 +30,14 @@ const AddItemToStock = props => {
     price: '',
     available: '',
     description: '',
-  }
-  const [itemState, setItemState] = useState(initialState)
+  };
 
-  const { name, price, available, description } = itemState
+  const [itemState, setItemState] = useState(initialState);
+
+  const { name, price, available, description } = itemState;
 
   const handleSubmit = () => {
-    submit(itemState)
+    submit(itemState);
 
     if(error){
       Alert.alert(
@@ -52,7 +53,7 @@ const AddItemToStock = props => {
         {cancelable: false},
       );       
     }
-    NavigationService.navigateBack()
+    NavigationService.navigateBack();
   }
 
   return(
@@ -111,17 +112,17 @@ const AddItemToStock = props => {
 const mapDispatchToProps = dispatch  => ({
   submit: newItem => {
     dispatch(AddingItemToStock(newItem))  }
-})
+});
 
 const mapStateToProps = state => {
   return {
     error: stockErrorsSelector(state),
     loading: stockLoadingSelector(state),
     itemToUpdate: itemToUpdateSelector(state)
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(AddItemToStock)
+  )(AddItemToStock);

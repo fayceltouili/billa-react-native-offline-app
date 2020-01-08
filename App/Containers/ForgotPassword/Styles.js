@@ -1,7 +1,7 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native';
 
 
-var {height, width} = Dimensions.get('window')
+var { height, width } = Dimensions.get('window');
 
 export default StyleSheet.create({
 
@@ -35,4 +35,4 @@ export default StyleSheet.create({
     borderBottomColor: '#353232',
     borderBottomWidth: 1,
   }
-})
+});

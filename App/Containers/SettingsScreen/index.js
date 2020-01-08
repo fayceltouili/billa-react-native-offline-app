@@ -1,20 +1,19 @@
 /**
  * Settings screen
  */
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 import { Divider } from 'react-native-paper';
-import { View, Text, TouchableOpacity, Alert } from 'react-native'
-import Styles from './Styles'
-import NavigationService from '../../Services/NavigationService'
-import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator'
-import { userSelector } from '../../Selectors'
-import { userLogout } from '../WelcomeScreen/Actions'
-import Mailer from 'react-native-mail'
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import Styles from './Styles';
+import NavigationService from '../../Services/NavigationService';
+import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator';
+import { userSelector } from '../../Selectors';
+import { userLogout } from '../WelcomeScreen/Actions';
+import Mailer from 'react-native-mail';
 
 
-
-const  SettingsScreen = ({ logout }) => {
+const SettingsScreen = ({ logout }) => {
 
   return(
     <View>
@@ -75,26 +74,25 @@ const  SettingsScreen = ({ logout }) => {
         </TouchableOpacity>
         <Divider />
       </View>
-      
     </View>
   )
-
 }
-
 
 const mapDispatchToProps = dispatch => ({
   logout: () => {
-    dispatch(userLogout())
-    NavigationService.navigate('Welcome')
+    dispatch(userLogout());
+    NavigationService.navigate('Welcome');
   },
 });
+
 const mapStateToProps = state => {
   return {
     user: userSelector(state),
-  }}
+  };
+};
 
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(SettingsScreen)
+  )(SettingsScreen);

@@ -2,11 +2,11 @@
  * About Component
  */
 
-import React from 'react'
+import React from 'react';
 import { Divider} from 'react-native-paper';
-import { View, Text, TouchableOpacity, Image } from 'react-native'
-import Styles from './Styles'
-import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator'
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import Styles from './Styles';
+import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator';
 
 
 const About = () => {
@@ -40,4 +40,4 @@ const About = () => {
   )
 }
 
-export default About
+export default About;

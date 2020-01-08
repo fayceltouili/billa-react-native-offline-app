@@ -2,7 +2,7 @@
  * Date reducer
  *
  */
-import produce from 'immer'
+import produce from 'immer';
 
 import {
   SET_ISSUE_DATE,

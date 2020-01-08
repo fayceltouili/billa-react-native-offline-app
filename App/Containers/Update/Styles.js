@@ -1,7 +1,5 @@
-import { StyleSheet, Dimensions } from 'react-native'
-
-
-var { height, width } = Dimensions.get('window')
+import { StyleSheet, Dimensions } from 'react-native';
+const { height, width } = Dimensions.get('window');
 
 export default StyleSheet.create({
 
@@ -73,5 +71,5 @@ export default StyleSheet.create({
   inner: {
     padding: 24,
     justifyContent: 'flex-end',
-},
-})
+  },
+});

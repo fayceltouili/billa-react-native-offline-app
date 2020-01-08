@@ -1,7 +1,7 @@
 /**
  *  Component to view and Edit items in the cart
  */
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   View,
   TextInput,
@@ -11,32 +11,32 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert
-} from 'react-native'
-import Styles from './Styles'
-import AppBarNavigator from '../../../Navigators/AppBarNavigator'
-import { connect } from 'react-redux'
-import { updatingItem, removingItem } from '../Actions'
-import { taxPercentSelector } from '../../Status/Selectors'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { updateCart } from '../../Stock/Actions'
-import { stockSelector, cartSelector } from '../../Stock/Selectors'
+} from 'react-native';
+import Styles from './Styles';
+import AppBarNavigator from '../../../Navigators/AppBarNavigator';
+import { connect } from 'react-redux';
+import { updatingItem, removingItem } from '../Actions';
+import { taxPercentSelector } from '../../Status/Selectors';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { updateCart } from '../../Stock/Actions';
+import { stockSelector, cartSelector } from '../../Stock/Selectors';
 
 const ItemView = props => {
 
   const { navigation, update, remove, taxPercent, updateStock, stock } = props
 
-  const item = navigation.getParam('item')
-  const oldName = item.name
-  const oldQuantity = item.quantity
+  const item = navigation.getParam('item');
+  const oldName = item.name ;
+  const oldQuantity = item.quantity;
 
-  const [name, setName] = useState(item.name)
-  const [price, setPrice] = useState(item.price.toString())
-  const [quantity, setQuantity] = useState(item.quantity.toString())
-  const [discount, setDiscount] = useState(item.discount.toString())
-  const [description, setDescription] = useState(item.description)
-  const [taxed, setTaxed] = useState(item.taxed)
+  const [name, setName] = useState(item.name);
+  const [price, setPrice] = useState(item.price.toString());
+  const [quantity, setQuantity] = useState(item.quantity.toString());
+  const [discount, setDiscount] = useState(item.discount.toString());
+  const [description, setDescription] = useState(item.description);
+  const [taxed, setTaxed] = useState(item.taxed);
 
-  const names = [oldName, name] 
+  const names = [oldName, name];
 
 
   if(item.itemCode){
@@ -55,13 +55,11 @@ const ItemView = props => {
 
   handleUpdate = () => { 
 
-    if(item.itemCode){
-      if(oldQuantity !== quantity) {
-        let itemCode = item.itemCode
-        let itemToUpdate = { itemCode, quantity: (+oldQuantity - +quantity) * -1 }  
-        updateStock(itemToUpdate)
-      }
-     }
+    if(item.itemCode && oldQuantity !== quantity){
+      let itemCode = item.itemCode;
+      let itemToUpdate = { itemCode, quantity: (+oldQuantity - +quantity) * -1 }; 
+      updateStock(itemToUpdate);
+    }
 
     let newItem = {
       itemCode: item.itemCode,
@@ -74,26 +72,26 @@ const ItemView = props => {
       taxed,
      }
 
-    update(newItem, names) 
+    update(newItem, names);
   }
 
   const handleRemove = () => {
     
     if(item.itemCode){
-      let itemCode = item.itemCode
-      let itemToUpdate = { itemCode, quantity: +oldQuantity * -1  }  
-      updateStock(itemToUpdate)
+      let itemCode = item.itemCode;
+      let itemToUpdate = { itemCode, quantity: +oldQuantity * -1  };
+      updateStock(itemToUpdate);
      }
 
-    remove(oldName)
+    remove(oldName);
   }
-  const Validate = () => name.length > 1 && price.length > 0
+  const Validate = () => name.length > 1 && price.length > 0;
 
-  const clacAmount = () => (+price * +quantity)
+  const clacAmount = () => (+price * +quantity);
 
-  const doNothing = () => null
+  const doNothing = () => null;
 
-  const toggle = () => taxed? setTaxed(false) : setTaxed(true)
+  const toggle = () => taxed? setTaxed(false) : setTaxed(true);
 
   return(
     <>
@@ -178,23 +176,24 @@ const ItemView = props => {
         </SafeAreaView>
       </KeyboardAwareScrollView>
     </>
-    )
+  )
 }
+
 const mapDispatchToProps = dispatch  => ({
   update: (updatedItem, names) => dispatch(updatingItem(updatedItem, names)), 
   remove: itemName =>  dispatch(removingItem(itemName)),
   updateStock: item => dispatch(updateCart(item))
-})
+});
 
 const mapStateToProps = state => {
   return {
     taxPercent: taxPercentSelector(state),
     stock: stockSelector(state),
     cart: cartSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(ItemView)
+  )(ItemView);

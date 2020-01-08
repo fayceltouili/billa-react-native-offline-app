@@ -1,7 +1,7 @@
 /**
  * View and edit customer
  */
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   View,
   TextInput,
@@ -10,23 +10,23 @@ import {
   Keyboard,
   Alert,
   Text
-} from 'react-native'
-import Styles from './Styles'
-import AppBarNavigator from '../../../Navigators/AppBarNavigator'
-import { connect } from 'react-redux'
-import { updatingCustomer, removingCustomer } from '../Actions'
-import { loadingSelector, errorSelector } from '../Selectors'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import RNPickerSelect from 'react-native-picker-select'
-import { statesList } from '../../../Services/StatesList'
+} from 'react-native';
+import Styles from './Styles';
+import AppBarNavigator from '../../../Navigators/AppBarNavigator';
+import { connect } from 'react-redux';
+import { updatingCustomer, removingCustomer } from '../Actions';
+import { loadingSelector, errorSelector } from '../Selectors';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import RNPickerSelect from 'react-native-picker-select';
+import { statesList } from '../../../Services/StatesList';
 
 
 const CustomerEditForm = props => {
 
-  const { update, remove, navigation } = props
-  const customer = navigation.getParam('customer') 
+  const { update, remove, navigation } = props;
+  const customer = navigation.getParam('customer') ;
 
-  const [customerState, setCustomerState] = useState(customer)
+  const [customerState, setCustomerState] = useState(customer);
 
   const {
     name,
@@ -37,7 +37,7 @@ const CustomerEditForm = props => {
     state,
     zip_code,
     note,
-  } = customerState
+  } = customerState;
 
   const placeholder = {
     label: 'Select a state...',
@@ -169,9 +169,8 @@ const CustomerEditForm = props => {
         </SafeAreaView>
       </KeyboardAwareScrollView>
     </>
-  )
-    
-      
+  ) 
+
 }
 const mapDispatchToProps = dispatch => ({
   update: customer =>  dispatch(updatingCustomer(customer)),
@@ -182,11 +181,11 @@ const mapStateToProps = state => {
   return {
     loading: loadingSelector(state),
     error: errorSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(CustomerEditForm)
+  )(CustomerEditForm);
   

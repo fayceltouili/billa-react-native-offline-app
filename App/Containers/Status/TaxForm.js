@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import { View, TextInput } from 'react-native'
-import Styles from './Styles'
-import SingleAppBarNavigator from '../../Navigators/SingleAppBarNavigator'
-import { connect } from 'react-redux'
-import { settingTax } from './Actions'
-import { taxPercentSelector } from './Selectors'
+import React, { useState } from 'react';
+import { View, TextInput } from 'react-native';
+import Styles from './Styles';
+import SingleAppBarNavigator from '../../Navigators/SingleAppBarNavigator';
+import { connect } from 'react-redux';
+import { settingTax } from './Actions';
+import { taxPercentSelector } from './Selectors';
 
 const TaxForm = props  => {
 
-  const { preTax, submit } = props
+  const { preTax, submit } = props;
 
-  const [taxPercent, setTTaxPercent] = useState(preTax.toString())
+  const [taxPercent, setTTaxPercent] = useState(preTax.toString());
   
-  const handleSubmit = () => submit(taxPercent) 
+  const handleSubmit = () => submit(taxPercent);
 
   return (
     <>
@@ -34,6 +34,7 @@ const TaxForm = props  => {
     </>
   )
 }
+
 const mapDispatchToProps = (dispatch)  => ({
   submit: (taxPercent) => dispatch(settingTax(taxPercent)) 
 });
@@ -41,10 +42,10 @@ const mapDispatchToProps = (dispatch)  => ({
 const mapStateToProps = (state) => {
   return {
     preTax: taxPercentSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(TaxForm)
+  )(TaxForm);

@@ -1,10 +1,10 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/lib/integration/react'
-import createStore from '../../Stores'
-import StartUp from '../StartUp'
+import React from 'react';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import createStore from '../../Stores';
+import StartUp from '../StartUp';
 
-const { store, persistor } = createStore()
+const { store, persistor } = createStore();
 
 export default  App = () => {
   return (
@@ -14,4 +14,4 @@ export default  App = () => {
       </PersistGate>
     </Provider>
   )
-}
+};

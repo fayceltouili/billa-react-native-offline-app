@@ -3,20 +3,20 @@
 
  */
 
-import produce from 'immer'
+import produce from 'immer';
 import {
   FETCH_USER,
   FETCH_USER_SUCCESS,
   FETCH_USER_ERROR,
   LOGOUT_USER,
-} from './Constants'
+} from './Constants';
 
 // The initial state of the user
 export const initialState = {
   user: false,
   loading: false,
   error: false,
-}
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const reducer = (state = initialState, action) =>
@@ -50,4 +50,4 @@ const reducer = (state = initialState, action) =>
     }
   });
 
-export default reducer
+export default reducer;

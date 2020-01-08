@@ -2,23 +2,23 @@
  * Register User form  
  */
 
-import React, {useState } from 'react'
-import { connect } from 'react-redux'
+import React, {useState } from 'react';
+import { connect } from 'react-redux';
 import {
   View,
   Text,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard
-} from 'react-native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import Styles from './Styles'
-import { userRegister } from './Actions'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { loadingRegisterSelector, errorsRegisterSelector } from './Selectors'
-import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator'
+} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Styles from './Styles';
+import { userRegister } from './Actions';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { loadingRegisterSelector, errorsRegisterSelector } from './Selectors';
+import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator';
 import LinearGradient from 'react-native-linear-gradient';
-import { Button } from 'react-native-paper'
+import { Button } from 'react-native-paper';
 
 
 const initialState = {
@@ -31,13 +31,13 @@ const initialState = {
   passwordErr: false,
   emailErr: false,
 }
-const passwordErrorMsg = 'Password must contain at least 6 characters, one numeric digit, one uppercase and one lowercase letter'
+
+const passwordErrorMsg = 'Password must contain at least 6 characters, one numeric digit, one uppercase and one lowercase letter';
 
 const  RegisterUser = props => {
 
-
-  const { submitUser, loading, errors } = props
-  const [ state, setState ] = useState(initialState)
+  const { submitUser, loading, errors } = props;
+  const [ state, setState ] = useState(initialState);
 
   const {
     first_name,
@@ -48,21 +48,21 @@ const  RegisterUser = props => {
     buisness_name,
     passwordErr,
     emailErr
-  } = state 
+  } = state ;
 
-  const validateEmail = () => {
-    return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email)}
+  const validateEmail = () => 
+     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
 
   const passwordStrength = () =>
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password)
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password);
 
   const validatePassword = () =>
-    password === confirmPassword && passwordStrength(password)
+    password === confirmPassword && passwordStrength(password);
 
   const handleSubmit = () => {
 
     if(!validateEmail())
-      setState({ ...state, emailErr: 'Invalid email address' })
+      setState({ ...state, emailErr: 'Invalid email address' });
 
     else if(!validatePassword())
     setState({ ...state, passwordErr: passwordErrorMsg })
@@ -76,7 +76,7 @@ const  RegisterUser = props => {
         email,
       }
       submitUser(user)
-  }
+    }
   }
 
   return(
@@ -184,7 +184,6 @@ const  RegisterUser = props => {
       </KeyboardAwareScrollView>
     </LinearGradient>
   )
-
 }
 
 
@@ -196,10 +195,10 @@ const mapStateToProps = state => {
   return {
     loading: loadingRegisterSelector(state),
     errors: errorsRegisterSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(RegisterUser)
+  )(RegisterUser);

@@ -5,7 +5,6 @@ import {
   REGISTER_USER,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
-
 } from './Constants';
 
 /**
@@ -17,8 +16,8 @@ export const userRegister = user => {
   return {
     type: REGISTER_USER,
     user,
-  }
-}
+  };
+};
 
 
 
@@ -31,8 +30,8 @@ export const userRegister = user => {
 export const userRegistred = () => {
   return {
     type: REGISTER_USER_SUCCESS,
-  }
-}
+  };
+};
 
 
 /**
@@ -47,4 +46,4 @@ export const userRegisterError = error => {
     type: REGISTER_USER_ERROR,
     error,
   };
-}
+};

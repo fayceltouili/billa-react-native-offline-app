@@ -2,44 +2,47 @@
  * Reset password form  
  */
 
-import React, {useState} from 'react'
-import { connect } from 'react-redux'
-import { View, Text, TextInput,  } from 'react-native'
-import { Button } from 'react-native-paper'
-import Styles from './Styles'
-import { resetPassword } from './Actions'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator'
-import { resetPasswordLoadingSelector, resetPasswordErrorsSelector } from './Selectors'
-import { setMessages } from '../MainScreen/Actions'
-import NavigationService from '../../Services/NavigationService'
+import React, {useState} from 'react';
+import { connect } from 'react-redux';
+import { View, Text, TextInput,  } from 'react-native';
+import { Button } from 'react-native-paper';
+import Styles from './Styles';
+import { resetPassword } from './Actions';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import BackAppBarNavigator from '../../Navigators/BackAppBarNavigator';
+import {
+  resetPasswordLoadingSelector,
+  resetPasswordErrorsSelector 
+} from './Selectors';
+import { setMessages } from '../MainScreen/Actions';
+import NavigationService from '../../Services/NavigationService';
 
 const ResetPassword = props => {
   
-  const { submitPassword, loading, errors, navigation, successMessages  } = props
-  const data = navigation.getParam('data')
-  const { id } = { ...data }
+  const { submitPassword, loading, errors, navigation, successMessages  } = props;
+  const data = navigation.getParam('data');
+  const { id } = { ...data };
 
-  const [password, setPassword] = useState()
-  const [confirmPassword, setConfirmPassword] = useState()
-  const [passwordErr, setPasswordErr] = useState(false)
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [passwordErr, setPasswordErr] = useState(false);
 
 
   // helper function to check password strength
   const passwordStrength = password => 
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password)
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password);
 
   // helper function to chech if passwords matches
   const validatePassword = () => 
-    password === confirmPassword && passwordStrength(password)
+    password === confirmPassword && passwordStrength(password);
 
   const handleSubmit = () => { 
-      if(!validatePassword()) setPasswordErr('Password must contain at least 6 characters, one numeric digit, one uppercase and one lowercase letter')
-      else submitPassword({ id, password }) 
+      if(!validatePassword()) setPasswordErr('Password must contain at least 6 characters, one numeric digit, one uppercase and one lowercase letter');
+      else submitPassword({ id, password });
 
       if(!errors){
-        successMessages(['Success', 'You have successfully reset your password!'])
-        NavigationService.navigate('MainScreen')
+        successMessages(['Success', 'You have successfully reset your password!']);
+        NavigationService.navigate('MainScreen');
       }
     }
 
@@ -90,7 +93,6 @@ const ResetPassword = props => {
       </View>
     </>
   )
-
 }
 
 
@@ -103,10 +105,10 @@ const mapStateToProps = state => {
   return {
     loading: resetPasswordLoadingSelector(state),
     errors: resetPasswordErrorsSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(ResetPassword)
+  )(ResetPassword);

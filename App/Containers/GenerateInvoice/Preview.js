@@ -1,15 +1,15 @@
 import React from 'react';
 import { StyleSheet, Dimensions, View } from 'react-native';
 import Pdf from 'react-native-pdf';
-import SingleAppBarNavigator from '../../Navigators/SingleAppBarNavigator'
+import SingleAppBarNavigator from '../../Navigators/SingleAppBarNavigator';
 
-const { height, width } = Dimensions.get('window')
+const { height, width } = Dimensions.get('window');
 
 const Preview = (props) => {
 
-	const PdfPathFile = props.navigation.getParam('source')
+	const PdfPathFile = props.navigation.getParam('source');
 
-	const source = { uri: `file:///${PdfPathFile}`, cache:true }
+	const source = { uri: `file:///${PdfPathFile}`, cache:true };
 
 	return (
 		<>
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Preview
+export default Preview;

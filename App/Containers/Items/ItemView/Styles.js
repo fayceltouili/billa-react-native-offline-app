@@ -1,5 +1,6 @@
-import { StyleSheet } from 'react-native'
-import ApplicationStyles from '../../../Theme/ApplicationStyles'
+import { StyleSheet } from 'react-native';
+import ApplicationStyles from '../../../Theme/ApplicationStyles';
+
 export default StyleSheet.create({
   container: {
     ...ApplicationStyles.screen.container,
@@ -35,6 +36,5 @@ export default StyleSheet.create({
   inner: {
     padding: 24,
     justifyContent: 'flex-end',
-},
-
-})
+  },
+});

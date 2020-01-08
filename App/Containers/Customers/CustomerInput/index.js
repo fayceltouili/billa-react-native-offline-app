@@ -1,7 +1,7 @@
 /**
  * Form To register a new customer
  */
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   View,
   TextInput,
@@ -10,15 +10,15 @@ import {
   Keyboard,
   Text,
   Alert
-} from 'react-native'
-import Styles from './Styles'
-import SingleAppBarNavigator from '../../../Navigators/SingleAppBarNavigator'
-import { connect } from 'react-redux'
-import { AddingCustomer } from '../Actions'
-import{ errorSelector, loadingSelector } from '../Selectors'
+} from 'react-native';
+import Styles from './Styles';
+import SingleAppBarNavigator from '../../../Navigators/SingleAppBarNavigator';
+import { connect } from 'react-redux';
+import { AddingCustomer } from '../Actions';
+import{ errorSelector, loadingSelector } from '../Selectors';
 import RNPickerSelect from 'react-native-picker-select';
-import { statesList } from '../../../Services/StatesList'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { statesList } from '../../../Services/StatesList';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const CustomerInputForm = ({ submit }) => {
 
@@ -32,7 +32,7 @@ const CustomerInputForm = ({ submit }) => {
     zip_code: '',
     note: '',
   }
-  const [customerState, setCustomerState] = useState(initialState)
+  const [customerState, setCustomerState] = useState(initialState);
 
   const {
     name,
@@ -43,7 +43,7 @@ const CustomerInputForm = ({ submit }) => {
     state,
     zip_code,
     note,
-  } = customerState
+  } = customerState;
 
   const placeholder = {
     label: 'Select a state...',
@@ -63,7 +63,7 @@ const CustomerInputForm = ({ submit }) => {
     else     
       submit({ ...customerState })
   } 
-  const doNothing = () => null
+  const doNothing = () => null;
 
   
   return(
@@ -161,10 +161,10 @@ const mapStateToProps = state => {
   return {
     loading: loadingSelector(state),
     error: errorSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(CustomerInputForm)
+  )(CustomerInputForm);

@@ -3,19 +3,19 @@
 
  */
 
-import produce from 'immer'
+import produce from 'immer';
 import {
   UPDATE_USER,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
-} from './Constants'
+} from './Constants';
 
 // The initial state
 export const initialState = {
   user: false,
   loading: false,
   error: false,
-}
+};
 
 const reducer = (state = initialState, action) =>
   produce(state, draft => {
@@ -41,4 +41,4 @@ const reducer = (state = initialState, action) =>
     }
   });
 
-export default reducer
+export default reducer;

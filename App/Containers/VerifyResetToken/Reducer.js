@@ -2,19 +2,19 @@
  * Verify reset token reducer
  */
 
-import produce from 'immer'
+import produce from 'immer';
 import {
   VERIFY_TOKEN,
   VERIFY_TOKEN_SUCCESS,
   VERIFY_TOKEN_ERROR,
-} from './Constants'
+} from './Constants';
 
 // The initial state
 export const initialState = {
   token: false,
   loading: false,
   error: false,
-}
+};
 
 const reducer = (state = initialState, action) =>
   produce(state, draft => {
@@ -39,4 +39,4 @@ const reducer = (state = initialState, action) =>
     }
   });
 
-export default reducer
+export default reducer;

@@ -18,8 +18,8 @@ export const fetchUser = user => {
   return {
     type: FETCH_USER,
     user,
-  }
-}
+  };
+};
 
 /**
  * Dispatched when the user info is loaded by the request saga
@@ -33,7 +33,7 @@ export const userfetched = user => {
     type: FETCH_USER_SUCCESS,
     user,
   };
-}
+};
 
 /**
  * Dispatched when fetching the user fails
@@ -47,7 +47,7 @@ export const userError = error => {
     type: FETCH_USER_ERROR,
     error,
   };
-}
+};
 
 
 /**
@@ -60,4 +60,4 @@ export const userLogout = () => {
   return {
     type: LOGOUT_USER,
   };
-}
+};

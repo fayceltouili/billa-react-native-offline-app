@@ -1,5 +1,5 @@
-import { StyleSheet, Dimensions } from 'react-native'
-var {height, width} = Dimensions.get('window')
+import { StyleSheet, Dimensions } from 'react-native';
+var {height, width} = Dimensions.get('window');
 
 
 export default StyleSheet.create({
@@ -51,4 +51,4 @@ export default StyleSheet.create({
     marginLeft: 30,
     fontFamily:'PalanquinDark-Regular'
   }
-})
+});

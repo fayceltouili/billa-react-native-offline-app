@@ -1,10 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 import { List, Divider } from 'react-native-paper';
-import { View, Text } from 'react-native'
-import Styles from './Styles'
-import NavigationService from '../../Services/NavigationService'
-import { customerSelector } from './Selectors'
+import { View, Text } from 'react-native';
+import Styles from './Styles';
+import NavigationService from '../../Services/NavigationService';
+import { customerSelector } from './Selectors';
 
 const Customers = ({ customer }) => {
 
@@ -27,9 +27,9 @@ const Customers = ({ customer }) => {
 const mapStateToProps = state => {
   return {
     customer: customerSelector(state),    
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
-  )(Customers)
+  )(Customers);

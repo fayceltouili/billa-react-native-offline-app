@@ -1,36 +1,37 @@
 /** Main Container for date section */
 
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import moment from 'moment'
-import { View, Text, Switch, TouchableOpacity } from 'react-native'
-import { List, Divider, Caption } from 'react-native-paper'
-import {  dueDateSelector, issueDateSelector } from '../../Selectors'
-import { removeDueDate, setInvoiceDate, setDueDate } from './Actions'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import moment from 'moment';
+import { View, Text, Switch, TouchableOpacity } from 'react-native';
+import { List, Divider, Caption } from 'react-native-paper';
+import {  dueDateSelector, issueDateSelector } from '../../Selectors';
+import { removeDueDate, setInvoiceDate, setDueDate } from './Actions';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const  DateComponent = props => {
+
   const { 
     issueDate,
     dueDate,
     handleRemoveDueDate,
     handleIssueDate,
     handleDueDate,
-  } = props
+  } = props;
 
   const [expanded, setExpanded] = useState(false);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
   const [date, setDate] = useState(new Date());
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [dateType, setDayType] = useState('')
+  const [dateType, setDayType] = useState('');
 
 
   const toggle = () => isSwitchOn ? setIsSwitchOn(false) : setIsSwitchOn(true);
 
-  const showDatePicker = () => setDatePickerVisibility(true)
+  const showDatePicker = () => setDatePickerVisibility(true);
   
-  !isSwitchOn ? handleRemoveDueDate() : null
+  !isSwitchOn ? handleRemoveDueDate() : null;
 
 
   return (
@@ -107,16 +108,16 @@ const mapDispatchToProps = dispatch=> ({
   handleRemoveDueDate: () => dispatch(removeDueDate()),
   handleIssueDate: date => dispatch(setInvoiceDate(date)),
   handleDueDate: date => dispatch(setDueDate(date)),
-})
+});
 
 const mapStateToProps = state => {
   return {
     dueDate: dueDateSelector(state),
     issueDate: issueDateSelector(state),
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-  )(DateComponent)
+  )(DateComponent);

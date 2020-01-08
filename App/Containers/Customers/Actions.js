@@ -17,7 +17,6 @@ import {
   CLEAR_CUSTOMER,
 } from './Constants';
 
-customerSelect
 
 /**
  * Select customer in reducer state
@@ -29,7 +28,7 @@ export const customerSelect = customer => {
     type: CUSTOMER_SELECT,
     customer,
   };
-}
+};
 
 /**
  * Load customers data, this action starts the request saga
@@ -40,7 +39,7 @@ export const fetchAllCustomers = () => {
   return {
     type: FETCH_ALL_CUSTOMERS,
   };
-}
+};
 
 
 /**
@@ -55,7 +54,7 @@ export const customersfetched = customers => {
     type: FETCH_ALL_CUSTOMERS_SUCCESS,
     customers,
   };
-}
+};
 
 
 
@@ -71,7 +70,7 @@ export const AddingCustomer = customer => {
     type: ADD_CUSTOMER,
     customer,
   };
-}
+};
 
 /**
  * Dispatched when registring the customer success
@@ -85,7 +84,7 @@ export const customerAdded = customer => {
     type: ADD_CUSTOMER_SUCCESS,
     customer,
   };
-}
+};
 
 
 /**
@@ -100,7 +99,7 @@ export const removingCustomer = customer_id => {
     type: REMOVE_CUSTOMER,
     customer_id,
   };
-}
+};
 
 /**
  * Dispatched when customer successfully removed
@@ -114,7 +113,7 @@ export const customerRemoved = customer_id => {
     type: REMOVE_CUSTOMER_SUCCESS,
     customer_id,
   };
-}
+};
 
 /**
  * Dispatched when updating a customer
@@ -128,7 +127,7 @@ export const updatingCustomer = customer => {
     type: UPDATE_CUSTOMER,
     customer,
   };
-}
+};
 
 /**
  * Dispatched when updating the customer success
@@ -142,7 +141,7 @@ export const customerUpdated = customer => {
     type: UPDATE_CUSTOMER_SUCCESS,
     customer,
   };
-}
+};
 
 /**
  * Dispatched when saga returns  fails
@@ -156,7 +155,7 @@ export const customerError = error => {
     type: CUSTOMER_ERROR,
     error,
   };
-}
+};
 
 /**
  * Dispatched when clearing  the customer object from reducer state 
@@ -167,4 +166,4 @@ export const clearingCustomer = () => {
   return {
     type: CLEAR_CUSTOMER,
   };
-}
+};
